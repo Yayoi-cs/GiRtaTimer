@@ -8,7 +8,7 @@
         ResizeMode="NoResize"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"        
       
-        Title="GiTimer" Height="140" Width="200">
+        Title="GiTimer" Height="140" Width="250">
     <Grid>
         <materialDesign:DialogHost x:Name="SettingDialog">
             <materialDesign:DialogHost.DialogContent>
