@@ -51,7 +51,7 @@ namespace WpfApp
         }
 
         private void MainWindow_KeyDown(object sender, KeyEventArgs e) {
-            if (e.Key == Key.O) {
+            if (e.Key == Key.U) {
                 
                 if (ModelConnecter.init(_path==null?"":_path)) {
                     OpenDialogHost.IsEnabled = false;
@@ -59,7 +59,7 @@ namespace WpfApp
                     ModelConnecter.misure();
                 }
             }
-            if(e.Key == Key.L) {
+            if(e.Key == Key.I) {
                 timerController._stop();
                 uiTimer.Stop();
             }
