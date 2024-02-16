@@ -36,11 +36,21 @@ namespace WpfApp.Model {
             if(isLoad && timerController.rltState && !blackScreen) {
                 analyzeCap(image);
             }
+            else if(isLoad && blackScreen) {
+                return false;
+            }
+            if(isLoad && !blackScreen) {
+                return true;
+            }
+            else if(!isLoad){
+                blackScreen = false;
+            }
             return false;
         }
 
         private static bool analyzeCap(Image<Rgba32> image) {
-            System.Windows.Point _point = Mouse.GetPosition(null);
+            System.Windows.Point _point;
+            windowsApiConnecter.GetCursorPos(out _point);
             double mouseLeft = _point.X;
             double windowMiddle = (double)(ModelConnecter.parentData.left + ModelConnecter.parentData.width / 2);
             
@@ -81,7 +91,18 @@ namespace WpfApp.Model {
                     }
                 }
             }
+            if (isWhite(image)) {
+                return false;
+            }
             return true;
+        }
+
+        private static bool isWhite(Image<Rgba32> image) {
+            Mat mat = myConverter.ConvertImageSharpToMat(image);
+
+            Scalar averageColor = Cv2.Mean(mat);
+            double threshold = 200;
+            return averageColor.Val0 > threshold;
         }
     }
 }

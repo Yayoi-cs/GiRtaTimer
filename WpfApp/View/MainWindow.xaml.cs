@@ -36,7 +36,7 @@ namespace WpfApp
         }
 
         private void UiTimer_Tick(object? sender, EventArgs e) {
-            Title.Text=timerController.rltState.ToString();
+            
             var basic = timerController.basicStopWatch.Elapsed;
             var rlt = timerController.rltStopWatch.Elapsed;
             rlt_h.Text = rlt.Hours == 0 ? "" : rlt.Hours.ToString() + ":";

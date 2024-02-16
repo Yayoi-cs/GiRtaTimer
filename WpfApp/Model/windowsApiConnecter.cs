@@ -12,6 +12,10 @@ namespace WpfApp.Model {
         [return: MarshalAs(UnmanagedType.Bool)]
         public static extern bool GetWindowRect(IntPtr hWnd, out RECT IpRect);
 
+        [DllImport("user32.dll")]
+        [return: MarshalAs(UnmanagedType.Bool)]
+        public static extern bool GetCursorPos(out Point lpPoint);
+
         [StructLayout(LayoutKind.Sequential)]
         public struct RECT {
             public int Left;

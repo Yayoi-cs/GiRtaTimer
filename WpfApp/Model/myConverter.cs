@@ -19,5 +19,17 @@ namespace WpfApp.Model {
                 return SixLabors.ImageSharp.Image.Load<Rgba32>(memoryStream.ToArray());
             }
         }
+
+        public static Mat ConvertImageSharpToMat(Image<Rgba32> image) {
+            MemoryStream memoryStream = new MemoryStream();
+
+            // ImageSharpのImageをPNG形式のバイト列にエンコード
+            image.SaveAsPng(memoryStream);
+
+            // バイト列からOpenCVSharp4のMatに変換
+            Mat mat = Cv2.ImDecode(memoryStream.ToArray(), ImreadModes.Color);
+
+            return mat;
+        }
     }
 }
