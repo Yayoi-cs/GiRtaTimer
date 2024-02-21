@@ -25,7 +25,6 @@ namespace WpfApp.Model {
             Process[] process = Process.GetProcessesByName(System.IO.Path.GetFileNameWithoutExtension(_path));
             if (process.Length > 0) {
                 IntPtr handle = process[0].MainWindowHandle;
-                
                 windowsApiConnecter.RECT rect;
                 internalData= new commonData();
                 if (windowsApiConnecter.GetWindowRect(handle, out rect)) {

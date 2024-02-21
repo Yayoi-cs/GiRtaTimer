@@ -21,6 +21,7 @@ namespace WpfApp.Model {
             if (internalData == null) {
                 return false;
             }
+            //IntPtr hwnd = windowsApiConnecter.FindWindow(null, "Genshin Impact");
             Bitmap screenshot = new Bitmap(
                 internalData.width,
                 internalData.height);

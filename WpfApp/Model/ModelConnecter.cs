@@ -8,13 +8,14 @@ using WpfApp.Model;
 
 namespace WpfApp.Model {
     public class ModelConnecter {
-        public static commonData? parentData;
+        public static commonData? parentData = new commonData();
+        public static keyData? keyData = new keyData();
         public static bool init(string path) {
             commonData? tmpData;
             tmpData = initialSetting.set(path);
             if(tmpData != null ) {
                 parentData = tmpData;
-                timerController._restart();
+                timerController._start();
                 return true;
             }
             return false;

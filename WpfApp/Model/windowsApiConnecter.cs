@@ -23,5 +23,8 @@ namespace WpfApp.Model {
             public int Right;
             public int Bottom;
         }
+
+        [DllImport("user32.dll", SetLastError = true)]
+        public static extern IntPtr FindWindow(string lpClassName, string lpWindowName);
     }
 }

@@ -12,26 +12,46 @@
     <Grid>
         <materialDesign:DialogHost x:Name="SettingDialog">
             <materialDesign:DialogHost.DialogContent>
-                <Grid Width="400" Height="225">
-                    <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="Title :" Margin="16" VerticalAlignment="Center"/>
-                            <TextBox x:Name="Title_Input" materialDesign:HintAssist.Hint="Input Title Here" MaxLength="25" Margin="16" VerticalAlignment="Center"/>
+                <Grid MaxWidth="400">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="auto" />
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0">
+                        <StackPanel Orientation="Vertical" Margin="10">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="auto" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="auto" />
+                                </Grid.RowDefinitions>
+                                <TextBlock Grid.Column="0" Grid.Row="0" Text="Title:" Margin="6" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+                                <TextBox Grid.Column="1" Grid.Row="0" x:Name="Title_Input" materialDesign:HintAssist.Hint="Input Title Here" MaxLength="28" Margin="6" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                                <TextBlock Grid.Column="0" Grid.Row="1" Text="Game Path:" Margin="6" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+                                <StackPanel Grid.Column="1" Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Left">
+                                    <TextBox x:Name="Path_Input" materialDesign:HintAssist.Hint="File Path" VerticalAlignment="Center"/>
+                                    <Button Click="Explore_Open_Click" x:Name="Explore_Open" Style="{StaticResource MaterialDesignIconButton}">
+                                        <materialDesign:PackIcon Kind="File" />
+                                    </Button>
+                                </StackPanel>
+                                <TextBlock Grid.Column="0" Grid.Row="2" Margin="6" Text="Start:" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+                                <Button Grid.Column="1" Grid.Row="2" HorizontalAlignment="Left" Content="U" Click="changeStart_Click" x:Name="changeStart" Style="{StaticResource MaterialDesignFlatButton}"/>
+                                <TextBlock Text="Stop:" Grid.Column="0" Margin="6" Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+                                <Button Content="I" Grid.Column="1" Grid.Row="3" HorizontalAlignment="Left" Click="changeStop_Click" x:Name="changeStop" Style="{StaticResource MaterialDesignFlatButton}" />
+                                <TextBlock Text="Reset:" Grid.Column="0" Margin="6" Grid.Row="4" HorizontalAlignment="Right" VerticalAlignment="Center" />
+                                <Button Content="O" Grid.Column="1" Grid.Row="4" HorizontalAlignment="Left" Click="changeReset_Click" x:Name="changeReset" Style="{StaticResource MaterialDesignFlatButton}" />
+                            </Grid>
                         </StackPanel>
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="Path exe" Margin="16" VerticalAlignment="Center"/>
-                            <TextBox x:Name="Path_Input" materialDesign:HintAssist.Hint="File Path" VerticalAlignment="Center"/>
-                            <Button Click="Explore_Open_Click" x:Name="Explore_Open" Style="{StaticResource MaterialDesignIconButton}">
-                                <materialDesign:PackIcon Kind="File" />
-                            </Button>
-                        </StackPanel>
-                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                            <TextBlock Text="Start : U" Margin="6" VerticalAlignment="Center" />
-                            <TextBlock Text="Start : I" Margin="6" VerticalAlignment="Center" />
-
-                        </StackPanel>
+                    </Grid>
+                    <Grid Grid.Row="1">
                         <Button Content="Close" x:Name="SettingDialogClose" Click="SettingDialogClose_Click" HorizontalAlignment="Center" Margin="16"/>
-                    </StackPanel>
+                    </Grid>
                 </Grid>
             </materialDesign:DialogHost.DialogContent>
         </materialDesign:DialogHost>
